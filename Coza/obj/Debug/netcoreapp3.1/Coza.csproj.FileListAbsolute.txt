@@ -438,3 +438,9 @@ C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Raz
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Home\Privacy.cshtml.g.cs
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\_ViewImports.cshtml.g.cs
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\_ViewStart.cshtml.g.cs
+C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Category\Index.cshtml.g.cs
+C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\_ViewImports.cshtml.g.cs
+C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\_ViewStart.cshtml.g.cs
+C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Category\Upsert.cshtml.g.cs
+C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_CreateAndBackButton.cshtml.g.cs
+C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_EditAndBackButton.cshtml.g.cs

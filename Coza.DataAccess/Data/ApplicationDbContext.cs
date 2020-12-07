@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Coza.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,5 +13,7 @@ namespace Coza.DataAccess.Data
             : base(options)
         {
         }
+
+        public  DbSet<Category> Category { get; set; }
     }
 }

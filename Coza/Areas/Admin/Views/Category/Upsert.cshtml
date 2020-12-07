@@ -1,0 +1,50 @@
+﻿<!-- add / edit name of category-->
+@model Coza.Models.Category
+@{ 
+    var title = "Create Category";
+}
+
+<section class="bg0 p-t-104 p-b-116">
+    <div class="container">
+        <div class="flex-w flex-tr">
+            <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+                <form method="post">
+                    @if (Model.Id != 0)
+                    {
+                        title = "Update Category";
+                    }
+                    <h4 class="mtext-105 cl2 txt-center p-b-30">
+                        @title
+                    </h4>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <label asp-for="Name" class="stext-101"></label>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input asp-for="Name" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" placeholder="Category Name">
+                        <img class="how-pos4 pointer-none" src="~/images/icons/icon-heart-01.png" alt="ICON">
+                    </div>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+
+                    @if (Model.Id != 0)
+                    {
+                        <partial name="_EditAndBackButton" model="Model.Id"/>
+                    }
+                    else
+                    {
+                        <partial name="_CreateAndBackButton" />
+                    }
+
+                </form>
+            </div>
+
+            <div class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
+                <img src="~/images/edit.jpg" class="img-fluid"/>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+
+}

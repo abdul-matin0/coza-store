@@ -10,10 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Migrations\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Coza.Models\Coza.Models.csproj" />
     <ProjectReference Include="..\Coza.Utility\Coza.Utility.csproj" />
   </ItemGroup>

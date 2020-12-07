@@ -12,6 +12,8 @@ using Coza.DataAccess.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Coza.DataAccess.Repository;
+using Coza.DataAccess.Repository.IRepository;
 
 namespace Coza
 {
@@ -34,6 +36,8 @@ namespace Coza
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages();
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

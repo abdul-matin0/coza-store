@@ -22,4 +22,8 @@
     <ProjectReference Include="..\Coza.Utility\Coza.Utility.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\vendor\" />
+  </ItemGroup>
+
 </Project>
