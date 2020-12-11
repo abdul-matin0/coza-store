@@ -36,6 +36,14 @@ namespace Coza.Areas.Customer.Controllers
 
         }
 
+        public IActionResult Details(int id)
+        {
+            Product product = new Product();
+            product = _unitOfWork.Product.GetFirstOrDefault(m => m.Id == id, includeProperties: "Category");
+
+            return View(product);
+        }
+
         public IActionResult Privacy()
         {
             return View();
