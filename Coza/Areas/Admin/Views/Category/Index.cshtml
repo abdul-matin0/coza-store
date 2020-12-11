@@ -1,4 +1,4 @@
-﻿<!-- view list of product categories, add and edit existing category -->
+﻿<!-- view list of categories, add and edit existing category -->
 @model IEnumerable<Coza.Models.Category>
 <!-- breadcrumb -->
 <div class="container pb-3">
@@ -9,7 +9,7 @@
         </a>
 
         <span class="stext-109 cl4">
-            Shoping Cart
+            Category
         </span>
     </div>
 </div>
@@ -64,7 +64,9 @@
                 else
                 {
                     <tr class="column-3 text-center">
-                        List Is Empty
+                        <td class="column-1 p-3">
+                            List Is Empty
+                        </td>
                     </tr>
                 }
 
@@ -75,5 +77,5 @@
 
 
 @section Scripts{
-    <script src="~/js/category.js"></script>
+    @*<script src="~/js/site.js"></script>*@
 }

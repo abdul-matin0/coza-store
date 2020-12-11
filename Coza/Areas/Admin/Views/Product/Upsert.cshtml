@@ -1,0 +1,115 @@
+﻿<!-- add / edit name of category-->
+@model Coza.Models.ViewModels.ProductViewModel
+@{
+    var title = "Create Product";
+}
+
+<section class="bg0 p-t-104 p-b-116">
+    <div class="container">
+        <div class="flex-w flex-tr">
+            <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+                <form method="post" enctype="multipart/form-data">
+                    @if (Model.Product.Id != 0)
+                    {
+                        title = "Update Product";
+                        <input type="hidden" asp-for="Product.Id" />
+                    }
+                    <h4 class="mtext-105 cl2 txt-center p-b-30">
+                        @title
+                    </h4>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <label asp-for="Product.Title" class="stext-101"></label>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input asp-for="Product.Title" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" placeholder="Product Title">
+                        <i class="how-pos4 pointer-none zmdi zmdi-plus"></i>
+                    </div>
+                    <span asp-validation-for="Product.Title" class="text-danger"></span>
+
+                    <label asp-for="Product.Price" class="stext-101"></label>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input asp-for="Product.Price" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="number" placeholder="Price">
+                        <i class="how-pos4 pointer-none zmdi zmdi-money"></i>
+                    </div>
+                    <span asp-validation-for="Product.Price" class="text-danger"></span>
+
+                    <label asp-for="Product.Description" class="stext-101"></label>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <textarea asp-for="Product.Description" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30 pt-2"></textarea>
+                        <i class="how-pos4 pointer-none zmdi zmdi-text-format"></i>
+                    </div>
+                    <span asp-validation-for="Product.Description" class="text-danger"></span>
+
+                    <label class="stext-101">Image</label>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input id="uploadBox" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30 pt-3" type="file" name="files" />
+                        <i class="how-pos4 pointer-none zmdi zmdi-image"></i>
+                    </div>
+
+                    <label class="stext-101">Category</label>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        @Html.DropDownListFor(m => m.Product.CategoryId, Model.CategoryList, "- select a category -", new { @class = "stext-111 cl2 plh3 size-116 p-l-62 p-r-30 form-control" })
+                        <i class="how-pos4 pointer-none zmdi zmdi-collection-item"></i>
+                    </div>
+
+
+                    @if (Model.Product.Id != 0)
+                    {
+                        <partial name="_EditAndBackButton" model="Model.Product.Id" />
+                    }
+                    else
+                    {
+                        // display create and back button
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" onclick="return validateInput()" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 mr-2 trans-04 pointer">
+                                Create
+                            </button>
+                            <a asp-action="Index" class="flex-c-m stext-101 cl2 size-121 bg8 bor1 hov-btn3 p-lr-15 ml-2 trans-04 pointer">
+                                Back To List
+                            </a>
+                        </div>
+
+                    }
+
+                </form>
+            </div>
+
+            <div class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
+                @if (Model.Product.Id != 0)
+                {
+                    // if not new product, display product image
+                    <img src="@Model.Product.ImageUrl" class="img-fluid" />
+                }
+                else
+                {
+                    // if new product, display default product image
+                    <img src="~/images/edit.jpg" class="img-fluid" />
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+
+    <script src="https://cdn.tiny.cloud/1/b8pi49xtwn2fd1ftcy29q0qm93oczbq01zncdj602c5awgng/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'lists',
+            toolbar_mode: 'floating',
+            menubar: 'file edit format'
+        });
+
+        function validateInput() {
+            if (document.getElementById("uploadBox").value == "") {
+                swal("Error", "Please select an image", "error");
+
+                return false;
+            }
+            return true;
+        }
+    </script>
+}

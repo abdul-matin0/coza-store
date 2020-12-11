@@ -4,6 +4,6 @@ C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza.Models\bin\Debug\netcoreapp
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza.Models\obj\Debug\netcoreapp3.1\Coza.Models.csprojAssemblyReference.cache
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza.Models\obj\Debug\netcoreapp3.1\Coza.Models.AssemblyInfoInputs.cache
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza.Models\obj\Debug\netcoreapp3.1\Coza.Models.AssemblyInfo.cs
-C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza.Models\obj\Debug\netcoreapp3.1\Coza.Models.csproj.CoreCompileInputs.cache
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza.Models\obj\Debug\netcoreapp3.1\Coza.Models.dll
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza.Models\obj\Debug\netcoreapp3.1\Coza.Models.pdb
+C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza.Models\obj\Debug\netcoreapp3.1\Coza.Models.csproj.CoreCompileInputs.cache

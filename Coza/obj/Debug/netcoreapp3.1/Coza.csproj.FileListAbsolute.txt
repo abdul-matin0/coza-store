@@ -444,3 +444,8 @@ C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Raz
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Category\Upsert.cshtml.g.cs
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_CreateAndBackButton.cshtml.g.cs
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_EditAndBackButton.cshtml.g.cs
+C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Product\Index.cshtml.g.cs
+C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Product\Upsert.cshtml.g.cs
+C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Modal.cshtml.g.cs
