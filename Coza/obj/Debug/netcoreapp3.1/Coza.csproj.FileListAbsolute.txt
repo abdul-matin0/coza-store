@@ -294,7 +294,6 @@ C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\Mic
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
@@ -377,11 +376,8 @@ C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\Coz
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\Coza.DataAccess.pdb
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\Coza.Models.pdb
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\Coza.Utility.pdb
-C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\refs\System.ComponentModel.Annotations.dll
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
-C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
-C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
@@ -450,3 +446,7 @@ C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\Mic
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Modal.cshtml.g.cs
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Home\Details.cshtml.g.cs
+C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Configuration.dll
+C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
