@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "tMaTd6cfDO7Mx1c3RA5EFwM0H9AFcQJTP10V5/TVSM6cngKbj0OOvd8Hpod9atfGTuAZkp1eWcqpLcZ0PRU4Fw==",
+  "dgSpecHash": "1BYCq/SCdiBBbnKC2NHai9PKeWtW5mX55xsOP+t5MYSw8Au0u0qpPxSy2SvIroJFnXlTqwbrPUpAnhtMSDKleg==",
   "success": true,
   "projectFilePath": "C:\\Users\\HP PAVILLION\\3D Objects\\.net core\\Coza\\Coza.Models\\Coza.Models.csproj",
   "expectedPackageFiles": [
@@ -34,7 +34,7 @@
     "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.dotnet.platformabstractions\\2.1.0\\microsoft.dotnet.platformabstractions.2.1.0.nupkg.sha512",
     "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\5.0.0\\microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512",
-    "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\2.2.0\\microsoft.extensions.configuration.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.0\\microsoft.extensions.dependencyinjection.5.0.0.nupkg.sha512",
     "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.dependencymodel\\2.1.0\\microsoft.extensions.dependencymodel.2.1.0.nupkg.sha512",

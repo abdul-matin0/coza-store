@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "GUkt2v9eVgCbdTeleLwKvJyVlc7eyN+5ve1KZc5pk+kSQsIyZQvJ12Ia4qSpqmqnbUeIK3DJN30jz9sQnETtAw==",
+  "dgSpecHash": "1HepGm7brIR7MpciG9Oblcuqyio2WZXAPQ+43AUR/eXzgte24ia6lUoZ8ye7NS4cXphFcsBfQDXpY+49VvC4ag==",
   "success": true,
   "projectFilePath": "C:\\Users\\HP PAVILLION\\3D Objects\\.net core\\Coza\\Coza.DataAccess\\Coza.DataAccess.csproj",
   "expectedPackageFiles": [
@@ -44,7 +44,7 @@
     "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\3.1.9\\microsoft.entityframeworkcore.sqlserver.3.1.9.nupkg.sha512",
     "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\5.0.0\\microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.caching.memory\\3.1.9\\microsoft.extensions.caching.memory.3.1.9.nupkg.sha512",
-    "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\2.2.0\\microsoft.extensions.configuration.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.0\\microsoft.extensions.dependencyinjection.5.0.0.nupkg.sha512",
     "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.dependencymodel\\2.1.0\\microsoft.extensions.dependencymodel.2.1.0.nupkg.sha512",

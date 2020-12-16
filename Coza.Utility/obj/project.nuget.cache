@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "k1qtlrbOEC+tp+FZLv3y5LTLapD73IfLx28svdqekG2tX0T2vM3ivXEAvvLWtjrOD2b/prcp79M99Bh7bv7RmQ==",
+  "dgSpecHash": "JYY1ez60CrS4RaGwTc4yrNfZR2hPrQAFZLh1FMC4c9jnHJWRnB/laHl1788f60GjKmGp5i4pXLBiDIrGsXNrag==",
   "success": true,
   "projectFilePath": "C:\\Users\\HP PAVILLION\\3D Objects\\.net core\\Coza\\Coza.Utility\\Coza.Utility.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
