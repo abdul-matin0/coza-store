@@ -1,11 +1,27 @@
 {
   "version": 2,
-  "dgSpecHash": "JYY1ez60CrS4RaGwTc4yrNfZR2hPrQAFZLh1FMC4c9jnHJWRnB/laHl1788f60GjKmGp5i4pXLBiDIrGsXNrag==",
+  "dgSpecHash": "DxDZmsgDtb5SnAGquXHxh0fJbSg2v+uRvHTug7WWqZcyeV+ksCNgRkRvW8CR1iytcd7TLoGB66T/yyBnkQU1Bg==",
   "success": true,
   "projectFilePath": "C:\\Users\\HP PAVILLION\\3D Objects\\.net core\\Coza\\Coza.Utility\\Coza.Utility.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.10\\microsoft.aspnetcore.cryptography.internal.3.1.10.nupkg.sha512",
+    "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.10\\microsoft.aspnetcore.cryptography.keyderivation.3.1.10.nupkg.sha512",
+    "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\3.1.10\\microsoft.aspnetcore.identity.ui.3.1.10.nupkg.sha512",
+    "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\3.1.10\\microsoft.extensions.caching.abstractions.3.1.10.nupkg.sha512",
+    "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.configuration\\3.1.10\\microsoft.extensions.configuration.3.1.10.nupkg.sha512",
     "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
-    "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512"
+    "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.configuration.binder\\3.1.10\\microsoft.extensions.configuration.binder.3.1.10.nupkg.sha512",
+    "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.10\\microsoft.extensions.dependencyinjection.3.1.10.nupkg.sha512",
+    "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.10\\microsoft.extensions.dependencyinjection.abstractions.3.1.10.nupkg.sha512",
+    "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\3.1.10\\microsoft.extensions.fileproviders.abstractions.3.1.10.nupkg.sha512",
+    "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.fileproviders.embedded\\3.1.10\\microsoft.extensions.fileproviders.embedded.3.1.10.nupkg.sha512",
+    "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.identity.core\\3.1.10\\microsoft.extensions.identity.core.3.1.10.nupkg.sha512",
+    "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.identity.stores\\3.1.10\\microsoft.extensions.identity.stores.3.1.10.nupkg.sha512",
+    "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.logging\\3.1.10\\microsoft.extensions.logging.3.1.10.nupkg.sha512",
+    "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.10\\microsoft.extensions.logging.abstractions.3.1.10.nupkg.sha512",
+    "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.options\\3.1.10\\microsoft.extensions.options.3.1.10.nupkg.sha512",
+    "C:\\Users\\HP PAVILLION\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "C:\\Users\\HP PAVILLION\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512"
   ],
   "logs": []
 }

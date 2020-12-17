@@ -2636,6 +2636,7 @@
       },
       "Coza.Utility/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Identity.UI": "3.1.10",
           "Microsoft.Extensions.Configuration.Abstractions": "5.0.0"
         },
         "runtime": {

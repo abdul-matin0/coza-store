@@ -1,91 +1,132 @@
 ﻿@page
 @model RegisterModel
+@using Coza.Utility
 @{
     ViewData["Title"] = "Register";
 }
 
-<h1>@ViewData["Title"]</h1>
-
-<div class="row">
-    <div class="col-md-4">
-        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h4>Create a new account.</h4>
-            <hr />
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Input.Name"></label>
-                <input asp-for="Input.Name" class="form-control" />
-                <span asp-validation-for="Input.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.StreetAddress"></label>
-                <input asp-for="Input.StreetAddress" class="form-control" />
-                <span asp-validation-for="Input.StreetAddress" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.City"></label>
-                <input asp-for="Input.City" class="form-control" />
-                <span asp-validation-for="Input.City" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.State"></label>
-                <input asp-for="Input.State" class="form-control" />
-                <span asp-validation-for="Input.State" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.PhoneNumber"></label>
-                <input asp-for="Input.PhoneNumber" class="form-control" />
-                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.Email"></label>
-                <input asp-for="Input.Email" class="form-control" />
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.Password"></label>
-                <input asp-for="Input.Password" class="form-control" />
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.ConfirmPassword"></label>
-                <input asp-for="Input.ConfirmPassword" class="form-control" />
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-            <button type="submit" class="btn btn-primary">Register</button>
-        </form>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h4>Use another service to register.</h4>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                            for details on setting up this ASP.NET application to support logging in via external services.
-                        </p>
-                    </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
-                        </div>
-                    </form>
-                }
-            }
-        </section>
+<br />
+<div class="row ml-5 mr-5">
+    <div class="col-9">
+        <h4 class="mtext-112 text-uppercase cl2 p-b-30 m-l-100">
+            @ViewData["Title"]
+        </h4>
     </div>
 </div>
+
+<section class="bg0">
+    <div class="container">
+        <div class="flex-w flex-tr">
+            <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+                <form method="post" asp-route-returnUrl="@Model.ReturnUrl">
+                    <h4 class="mtext-105 cl2 txt-center p-b-30">
+                        Create a new account.
+                    </h4>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <label asp-for="Input.Name" class="stext-101"></label>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input asp-for="Input.Name" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text">
+                        <i class="how-pos4 pointer-none zmdi zmdi-account"></i>
+                    </div>
+                    <span asp-validation-for="Input.Name" class="text-danger"></span>
+
+                    <label asp-for="Input.StreetAddress" class="stext-101"></label>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input asp-for="Input.StreetAddress" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text">
+                        <i class="how-pos4 pointer-none zmdi zmdi-home"></i>
+                    </div>
+                    <span asp-validation-for="Input.StreetAddress" class="text-danger"></span>
+
+                    <label asp-for="Input.City" class="stext-101"></label>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input asp-for="Input.City" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text">
+                        <i class="how-pos4 pointer-none zmdi zmdi-city"></i>
+                    </div>
+                    <span asp-validation-for="Input.City" class="text-danger"></span>
+
+                    <label asp-for="Input.State" class="stext-101"></label>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input asp-for="Input.State" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text">
+                        <i class="how-pos4 pointer-none zmdi zmdi-play-for-work"></i>
+                    </div>
+                    <span asp-validation-for="Input.State" class="text-danger"></span>
+
+                    <label asp-for="Input.PhoneNumber" class="stext-101"></label>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input asp-for="Input.PhoneNumber" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="number">
+                        <i class="how-pos4 pointer-none zmdi zmdi-phone"></i>
+                    </div>
+                    <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+
+                    <label asp-for="Input.Email" class="stext-101"></label>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input asp-for="Input.Email" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text">
+                        <i class="how-pos4 pointer-none zmdi zmdi-account-box-mail"></i>
+                    </div>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+
+                    <label asp-for="Input.Password" class="stext-101"></label>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input asp-for="Input.Password" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="password">
+                        <i class="how-pos4 pointer-none zmdi zmdi-shield-security"></i>
+                    </div>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+
+                    <label asp-for="Input.ConfirmPassword" class="stext-101"></label>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input asp-for="Input.ConfirmPassword" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="password">
+                        <i class="how-pos4 pointer-none zmdi zmdi-shield-check"></i>
+                    </div>
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                    @if (User.IsInRole(SD.Role_Admin))
+                    {
+                        <div class="bor8 m-b-20 mt-5 how-pos4-parent">
+                            @Html.DropDownListFor(m => m.Input.Role, Model.Input.RoleList, "- Select User Role -", new { @class = "stext-111 cl2 plh3 size-116 p-l-62 p-r-30 form-control" })
+                            <i class="how-pos4 pointer-none zmdi zmdi-collection-item"></i>
+                        </div>
+                    }
+
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 mr-2 trans-04 pointer">
+                            Register
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="size-210 bor10 p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
+                <h4>Use another service to register.</h4>
+                <hr />
+                @{
+                    if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                    {
+                        <div>
+                            <p>
+                                There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                                for details on setting up this ASP.NET application to support logging in via external services.
+                            </p>
+                        </div>
+                    }
+                    else
+                    {
+                        <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                            <div>
+                                <p>
+                                    @foreach (var provider in Model.ExternalLogins)
+                                    {
+                                        <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                    }
+                                </p>
+                            </div>
+                        </form>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</section>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
