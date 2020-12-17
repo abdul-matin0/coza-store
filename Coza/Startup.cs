@@ -43,6 +43,12 @@ namespace Coza
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddSingleton<IEmailSender, EmailSender>();
+            // if unauthorized user goes to a non-authorized page, Access denied page is displayed
+            services.ConfigureApplicationCookie(options => {
+                options.LoginPath = $"/Identity/Account/Login";
+                options.LogoutPath = $"/Identity/Account/Logout";
+                options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+            }); ;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

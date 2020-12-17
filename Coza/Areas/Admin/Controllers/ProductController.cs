@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Coza.DataAccess.Repository.IRepository;
 using Coza.Models;
 using Coza.Models.ViewModels;
+using Coza.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -13,6 +15,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace Coza.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin + ","+ SD.Role_Employee)]
     public class ProductController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

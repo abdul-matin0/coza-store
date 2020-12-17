@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Coza.Utility
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -84,15 +85,17 @@
                             <li class="label1" data-label1="hot">
                                 <a href="shoping-cart.html">Features</a>
                             </li>
-
-                            <li>
-                                <a href="">Content Management</a>
-                                <ul class="sub-menu">
-                                    <li><a asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a></li>
-                                    <li><a asp-area="Admin" asp-controller="Product" asp-action="Index">Product</a></li>
-                                    <li><a href="home-03.html">Homepage 3</a></li>
-                                </ul>
-                            </li>
+                            @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
+                            {
+                                <li>
+                                    <a href="">Content Management</a>
+                                    <ul class="sub-menu">
+                                        <li><a asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a></li>
+                                        <li><a asp-area="Admin" asp-controller="Product" asp-action="Index">Product</a></li>
+                                        <li><a href="home-03.html">Homepage 3</a></li>
+                                    </ul>
+                                </li>
+                            }
 
                             <li>
                                 <a asp-area="" asp-controller="Home" asp-action="Privacy">About</a>
@@ -193,17 +196,21 @@
                 <li>
                     <a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
                 </li>
-                <li>
-                    <a href="">Content Management</a>
-                    <ul class="sub-menu-m">
-                        <li><a asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a></li>
-                        <li><a asp-area="Admin" asp-controller="Product" asp-action="Index">Product</a></li>
-                        <li><a href="home-03.html">Homepage 3</a></li>
-                    </ul>
-                    <span class="arrow-main-menu-m">
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </span>
-                </li>
+                @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
+                {
+
+                    <li>
+                        <a href="">Content Management</a>
+                        <ul class="sub-menu-m">
+                            <li><a asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a></li>
+                            <li><a asp-area="Admin" asp-controller="Product" asp-action="Index">Product</a></li>
+                            <li><a href="home-03.html">Homepage 3</a></li>
+                        </ul>
+                        <span class="arrow-main-menu-m">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </span>
+                    </li>
+                 }
 
                 <li>
                     <a asp-area="" asp-controller="Home" asp-action="Privacy">About</a>
