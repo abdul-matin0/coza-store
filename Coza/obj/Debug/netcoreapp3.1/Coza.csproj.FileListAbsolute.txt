@@ -488,3 +488,4 @@ C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\Mic
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Coza.csproj.CoreCompileInputs.cache
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Coza.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Coza.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\Index.cshtml.g.cs

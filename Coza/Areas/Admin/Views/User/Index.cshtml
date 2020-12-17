@@ -1,0 +1,83 @@
+﻿<!-- admin only can view all users -->
+@model IEnumerable<Coza.Models.ApplicationUser>
+
+<!-- breadcrumb -->
+<div class="container pb-3">
+    <div class="bread-crumb flex-w p-l-25 p-r-15 pt-2 p-lr-0-lg">
+        <a asp-area="Customer" asp-controller="Home" asp-action="Index" class="stext-109 cl8 hov-cl1 trans-04">
+            Home
+            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+        </a>
+
+        <span class="stext-109 cl4">
+            Users
+        </span>
+    </div>
+</div>
+
+<div class="row ml-5 mr-5">
+    <div class="col-9">
+        <h4 class="mtext-111 text-uppercase cl2 p-b-30 m-l-100">
+            Users
+        </h4>
+    </div>
+    <div class="col-md-3 col-12 text-right">
+        <a class="flex-c-m btn stext-101 cl0 size-116 bg3 bor14 hov-btn3 trans-04 pointer" asp-area="Identity" asp-page="/Account/Register"><i class="zmdi zmdi-plus"></i> &nbsp; Create New User</a>
+    </div>
+</div>
+
+<br />
+
+<div class="row m-lr-50 d-flex justify-content-center">
+    <div class="col-10">
+
+        <div class="wrap-table-shopping-cart">
+            <table id="tblData" class="table-shopping-cart">
+                <tr class="table_head">
+                    <th class="column-1">Name</th>
+                    <th class="column-1">Email</th>
+                    <th class="column-1">Phone</th>
+                    <th class="column-1">Role</th>
+                    <th class="column-2"></th>
+                </tr>
+                @if (Model.Count() > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr style="height: 150px;">
+                            <td class="column-1">
+                                @item.Name
+                            </td>
+                            <td class="column-1">
+                                @item.Email
+                            </td>
+                            <td class="column-1">
+                                @item.PhoneNumber
+                            </td>
+                            <td class="column-1">
+                                @item.Role
+                            </td>
+                            <td class="column-3">
+                                <div class="wrap-num-product flex-w m-l-auto mr-3">
+                                    <div class="btn-num-product-down cl8 flex-c-m" style="cursor: auto">
+                                        <i class="fs-16 zmdi zmdi-minus"></i>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+
+                }
+                else
+                {
+                    <tr class="column-3 text-center">
+                        <td class="column-1 p-3">
+                            List Is Empty
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
