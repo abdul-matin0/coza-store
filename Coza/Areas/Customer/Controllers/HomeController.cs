@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Coza.Models.ViewModels;
 using Coza.DataAccess.Repository.IRepository;
 using Coza.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Coza.Areas.Customer.Controllers
 {
@@ -41,7 +42,21 @@ namespace Coza.Areas.Customer.Controllers
             Product product = new Product();
             product = _unitOfWork.Product.GetFirstOrDefault(m => m.Id == id, includeProperties: "Category");
 
-            return View(product);
+            ShoppingCart cartObj = new ShoppingCart()
+            {
+                Product = product,
+                ProductId = product.Id
+            };
+
+            return View(cartObj);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public IActionResult Details(ShoppingCart cartObj)
+        {
+            return RedirectToAction("Index");
         }
 
         public IActionResult Privacy()

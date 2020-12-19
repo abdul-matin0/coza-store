@@ -1,5 +1,5 @@
 ﻿<!-- view product details and add to cart -->
-@model Coza.Models.Product
+@model Coza.Models.ShoppingCart
     <!-- breadcrumb -->
     <div class="container">
         <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
@@ -9,12 +9,12 @@
             </a>
 
             <a class="stext-109 cl8 hov-cl1 trans-04">
-                @Model.Category.Name
+                @Model.Product.Category.Name
                 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
             </a>
 
             <span class="stext-109 cl4">
-                @Model.Title
+                @Model.Product.Title
             </span>
         </div>
     </div>
@@ -31,11 +31,11 @@
                             <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
                             <div class="slick3 gallery-lb">
-                                <div class="item-slick3" data-thumb="@Model.ImageUrl">
+                                <div class="item-slick3" data-thumb="@Model.Product.ImageUrl">
                                     <div class="wrap-pic-w pos-relative">
-                                        <img src="@Model.ImageUrl" alt="IMG-PRODUCT">
+                                        <img src="@Model.Product.ImageUrl" alt="IMG-PRODUCT">
 
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="@Model.ImageUrl">
+                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="@Model.Product.ImageUrl">
                                             <i class="fa fa-expand"></i>
                                         </a>
                                     </div>
@@ -44,19 +44,18 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-6 col-lg-5 p-b-30">
+                <form method="post" class="col-md-6 col-lg-5 p-b-30">
                     <div class="p-r-50 p-t-5 p-lr-0-lg">
                         <h4 class="mtext-105 cl2 js-name-detail p-b-14">
-                            @Model.Title
+                            @Model.Product.Title
                         </h4>
 
                         <span class="mtext-106 cl2">
-                            $@Model.Price
+                            $@Model.Product.Price
                         </span>
 
                         <p class="stext-102 cl3 p-t-23">
-                            @Html.Raw(Model.Description)
+                            @Html.Raw(Model.Product.Description)
                         </p>
 
                         <!--  -->
@@ -68,16 +67,24 @@
                                             <i class="fs-16 zmdi zmdi-minus"></i>
                                         </div>
 
-                                        <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
+                                        <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" asp-for="Count">
 
                                         <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
                                             <i class="fs-16 zmdi zmdi-plus"></i>
                                         </div>
                                     </div>
+                                    @if (User.Identity.Name != null)
+                                    {
+                                        <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                            Add to cart
+                                        </button>
+                                     }
+                                     else{
 
-                                    <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                        Add to cart
-                                    </button>
+                                        <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                            Add to cart
+                                        </button>
+                                     }
                                 </div>
                             </div>
                         </div>
@@ -103,7 +110,8 @@
                             </a>
                         </div>
                     </div>
-                </div>
+                    
+                </form>
             </div>
 
             <div class="bor10 m-t-50 p-t-43 p-b-40">
@@ -130,7 +138,7 @@
                         <div class="tab-pane fade show active" id="description" role="tabpanel">
                             <div class="how-pos2 p-lr-15-md">
                                 <p class="stext-102 cl6">
-                                    @Html.Raw(Model.Description)    
+                                    @Html.Raw(Model.Product.Description)    
                                 </p>
                             </div>
                         </div>
@@ -287,7 +295,7 @@
             </span>
 
             <span class="stext-107 cl6 p-lr-25">
-                Categories: @Model.Category.Name
+                Categories: @Model.Product.Category.Name
             </span>
         </div>
     </section>
