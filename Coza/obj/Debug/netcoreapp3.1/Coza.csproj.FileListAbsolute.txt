@@ -490,3 +490,4 @@ C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Coz
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Coza.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\Index.cshtml.g.cs
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Home\Products.cshtml.g.cs
+C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Cart\Index.cshtml.g.cs
