@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Coza.DataAccess.Repository.IRepository;
 using Coza.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Coza.Areas.Customer.Controllers
@@ -18,6 +19,7 @@ namespace Coza.Areas.Customer.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        [Authorize]
         public IActionResult Index()
         {
             //get logged in user
