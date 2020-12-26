@@ -29,6 +29,7 @@
                                 <th class="column-3">Price</th>
                                 <th class="column-4">Quantity</th>
                                 <th class="column-5">Total</th>
+                                <th class="column-5"></th>
                             </tr>
                             @foreach (var items in Model.ListCart)
                             {
@@ -42,20 +43,34 @@
                                     <td class="column-3">$@items.Product.Price</td>
                                     <td class="column-4">
                                         <div class="wrap-num-product flex-w m-l-auto m-r-0">
-                                            <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+                                            <a asp-controller="Cart" asp-action="Minus" asp-route-id="@items.Id" class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
                                                 <i class="fs-16 zmdi zmdi-minus"></i>
-                                            </div>
+                                            </a>
 
                                             <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product1" value="@items.Count">
 
-                                            <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+                                            <a asp-controller="Cart" asp-action="Plus" asp-route-id="@items.Id" class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
                                                 <i class="fs-16 zmdi zmdi-plus"></i>
-                                            </div>
+                                            </a>
                                         </div>
                                     </td>
                                     <td class="column-5">$@items.Price</td>
+                                    <td class="column-5">
+                                        <a asp-controller="Cart" asp-action="Remove" asp-route-id="@items.Id" class="btn cl8 hov-btn1 trans-04 flex-c-m">
+                                            <i class="fs-25 zmdi zmdi-delete"></i>
+                                        </a>
+                                    </td>
                                 </tr>
 
+                            }
+                            @if (Model.ListCart.Count() == 0)
+                            {
+                                <tr class="table_row">
+                                    <td class="column-1" colspan="5">
+                                        <p>You do not have any item in your cart</p>
+                                    </td>
+
+                                </tr>
                             }
 
                         </table>
@@ -84,9 +99,9 @@
                         </div>
                     </div>
 
-                    <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 m-t-15 trans-04 pointer">
+                    <a asp-controler="Cart" asp-action="Checkout" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 m-t-15 trans-04 pointer">
                         Proceed to Checkout
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
