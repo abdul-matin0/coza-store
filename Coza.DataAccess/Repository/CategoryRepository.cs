@@ -21,6 +21,11 @@ namespace Coza.DataAccess.Repository
             var objFromDb = _db.Category.FirstOrDefault(c => c.Id == category.Id);
             if(objFromDb != null)
             {
+                if (category.ImageUrl != null)
+                {
+                    objFromDb.ImageUrl = category.ImageUrl;
+                }
+
                 objFromDb.Name = category.Name;
             }
         }

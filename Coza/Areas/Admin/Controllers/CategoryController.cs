@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Coza.DataAccess.Repository.IRepository;
 using Coza.Models;
 using Coza.Utility;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Coza.Areas.Admin.Controllers
@@ -15,9 +17,12 @@ namespace Coza.Areas.Admin.Controllers
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        public CategoryController(IUnitOfWork unitOfWork)
+        private readonly IWebHostEnvironment _hostEnvironment;
+
+        public CategoryController(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment)
         {
             _unitOfWork = unitOfWork;
+            _hostEnvironment = hostEnvironment;
         }
 
         public IActionResult Index()
@@ -53,7 +58,46 @@ namespace Coza.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                if(category.Id == 0)
+                string webRootPath = _hostEnvironment.WebRootPath;
+                var files = HttpContext.Request.Form.Files;
+                // check if a file was selected
+                if (files.Count > 0)
+                {
+                    string fileName = Guid.NewGuid().ToString();
+                    var uploads = Path.Combine(webRootPath, @"images\categories");
+                    var extension = Path.GetExtension(files[0].FileName);
+
+                    if (category.ImageUrl != null)
+                    {
+                        // for update, image url is not null
+                        var imagePath = Path.Combine(webRootPath, category.ImageUrl.TrimStart('\\'));
+
+                        if (System.IO.File.Exists(imagePath))
+                        {
+                            System.IO.File.Delete(imagePath);
+                        }
+                    }
+                    using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+                    {
+                        files[0].CopyTo(fileStreams);
+                    }
+
+                    category.ImageUrl = @"\images\categories\" + fileName + extension;
+                }
+                else
+                {
+                    // no image was selected
+
+                    // for update
+                    if (category.Id != 0)
+                    {
+                        Category objFromDb = _unitOfWork.Category.Get(category.Id);
+                        // get image from db and assign to view model
+                        category.ImageUrl = objFromDb.ImageUrl;
+                    }
+                }
+
+                if (category.Id == 0)
                 {
                     _unitOfWork.Category.Add(category);
                 }

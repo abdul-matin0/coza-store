@@ -1,14 +1,12 @@
 ﻿<!-- add / edit name of category-->
 @model Coza.Models.Category
-@{ 
-    var title = "Create Category";
-}
+@{ var title = "Create Category"; }
 
 <section class="bg0 p-t-104 p-b-116">
     <div class="container">
         <div class="flex-w flex-tr">
             <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                     @if (Model.Id != 0)
                     {
                         title = "Update Category";
@@ -25,20 +23,44 @@
                     </div>
                     <span asp-validation-for="Name" class="text-danger"></span>
 
+                    <label class="stext-101">Image</label>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input id="uploadBox" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30 pt-3" type="file" name="files" />
+                        <i class="how-pos4 pointer-none zmdi zmdi-image"></i>
+                    </div>
+
                     @if (Model.Id != 0)
                     {
-                        <partial name="_EditAndBackButton" model="Model.Id"/>
-                    }
+                        <partial name="_EditAndBackButton" model="Model.Id" /> 
+                     }
                     else
                     {
-                        <partial name="_CreateAndBackButton" />
+                        // display create and back button
+                        @*<partial name="_CreateAndBackButton" />*@
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" onclick="return validateInput()" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 mr-2 trans-04 pointer">
+                                Create
+                            </button>
+                            <a asp-action="Index" class="flex-c-m stext-101 cl2 size-121 bg8 bor1 hov-btn3 p-lr-15 ml-2 trans-04 pointer">
+                                Back To List
+                            </a>
+                        </div>
                     }
 
                 </form>
             </div>
 
             <div class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
-                <img src="~/images/edit.jpg" class="img-fluid"/>
+                @if (Model.Id != 0)
+                {
+                    // if not new product, display product image
+                    <img src="@Model.ImageUrl" class="img-fluid" /> 
+                }
+                else
+                {
+                    // if new product, display default product image
+                    <img src="~/images/edit.jpg" class="img-fluid" />
+                }
             </div>
         </div>
     </div>
@@ -46,5 +68,16 @@
 
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        function validateInput() {
+            if (document.getElementById("uploadBox").value == "") {
+                swal("Error", "Please select an image", "error");
+
+                return false;
+            }
+            return true;
+        }
+    </script>
 
 }
