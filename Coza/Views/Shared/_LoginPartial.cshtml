@@ -6,6 +6,8 @@
 {
     <a class="flex-c-m trans-04 p-lr-25" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
 
+    <a class="flex-c-m trans-04 p-lr-25" asp-area="Identity" asp-page="/Account/Manage/Index">Manage Profile<i class="fs-16 p-lr-10 zmdi zmdi-account"></i> </a>
+
     <form class="form-inline flex-c-m trans-04 p-lr-25" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
         <button type="submit" class="nav-link btn btn-link text-white-50" style="font-size: smaller;">Logout</button>
     </form>
