@@ -492,3 +492,4 @@ C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Raz
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Home\Products.cshtml.g.cs
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Cart\Index.cshtml.g.cs
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\_ViewStart.cshtml.g.cs
+C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Cart\Checkout.cshtml.g.cs

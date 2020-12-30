@@ -1,0 +1,81 @@
+﻿<!-- checkout and payment with stripe -->
+@model Coza.Models.ViewModels.ShoppingCartViewModel
+
+<section class="bg0 mt-3">
+    <div class="container">
+        <div class="flex-w flex-tr">
+            <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+                <form method="post">
+                    <h4 class="mtext-105 cl2 txt-center p-b-30">
+                        Checkout
+                    </h4>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <label asp-for="OrderHeader.Name" class="stext-101"></label>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input asp-for="OrderHeader.Name" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text">
+                        <i class="how-pos4 pointer-none zmdi zmdi-account"></i>
+                    </div>
+                    <span asp-validation-for="OrderHeader.Name" class="text-danger"></span>
+
+                    <label asp-for="OrderHeader.StreetAddress" class="stext-101"></label>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input asp-for="OrderHeader.StreetAddress" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text">
+                        <i class="how-pos4 pointer-none zmdi zmdi-home"></i>
+                    </div>
+                    <span asp-validation-for="OrderHeader.StreetAddress" class="text-danger"></span>
+
+                    <label asp-for="OrderHeader.City" class="stext-101"></label>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input asp-for="OrderHeader.City" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text">
+                        <i class="how-pos4 pointer-none zmdi zmdi-city"></i>
+                    </div>
+                    <span asp-validation-for="OrderHeader.City" class="text-danger"></span>
+
+                    <label asp-for="OrderHeader.State" class="stext-101"></label>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input asp-for="OrderHeader.State" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text">
+                        <i class="how-pos4 pointer-none zmdi zmdi-play-for-work"></i>
+                    </div>
+                    <span asp-validation-for="OrderHeader.State" class="text-danger"></span>
+
+                    <label asp-for="OrderHeader.PhoneNumber" class="stext-101"></label>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input asp-for="OrderHeader.PhoneNumber" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="number">
+                        <i class="how-pos4 pointer-none zmdi zmdi-phone"></i>
+                    </div>
+                    <span asp-validation-for="OrderHeader.PhoneNumber" class="text-danger"></span>
+
+                </form>
+            </div>
+
+            <div class="size-210 bor10 flex-w p-lr-93 p-tb-90 p-lr-15-lg w-full-md" style="flex-direction: column;">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-info">Order Summary:</span>
+                </h4>
+                <ul class="list-group mb-3">
+                    @foreach (var details in Model.ListCart)
+                    {
+
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div>
+                                <h6 class="my-0">@details.Product.Title</h6>
+                                <small class="text-muted">Quantity: @details.Count</small>
+                            </div>
+                            <span class="text-muted">$@(details.Price * details.Count)</span>
+                        </li>
+                    }
+                    <li class="list-group-item d-flex justify-content-between bg-light">
+                        <small class="text-info">Total (USD)</small>
+                        <strong class="text-info">$@Model.OrderHeader.OrderTotal</strong>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" /> 
+
+}

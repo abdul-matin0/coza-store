@@ -31,7 +31,7 @@ namespace Coza.Areas.Customer.Controllers
             // display list of all products in cart based on user
             ShoppingCartViewModel shoppingCartVM = new ShoppingCartViewModel()
             {
-                ListCart = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUser.Id == claims.Value, includeProperties: "Product"),
+                ListCart = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claims.Value, includeProperties: "Product"),
                 OrderHeader = new Models.OrderHeader()
             };
 
@@ -86,6 +86,37 @@ namespace Coza.Areas.Customer.Controllers
             HttpContext.Session.SetInt32(SD.ssShoppingCart, currentNumOfItem - 1);
 
             return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Checkout()
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claims = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+            // display list of all products in cart based on user
+            ShoppingCartViewModel shoppingCartVM = new ShoppingCartViewModel()
+            {
+                ListCart = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claims.Value, includeProperties: "Product"),
+                OrderHeader = new Models.OrderHeader()
+            };
+
+            // get details of logged in user and map to OrderHeader properties
+            shoppingCartVM.OrderHeader.ApplicationUser = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claims.Value);
+
+            foreach (var items in shoppingCartVM.ListCart)
+            {
+                items.Price = (items.Product.Price * items.Count);
+                shoppingCartVM.OrderHeader.OrderTotal += (items.Price);
+
+            }
+
+            shoppingCartVM.OrderHeader.Name = shoppingCartVM.OrderHeader.ApplicationUser.Name;
+            shoppingCartVM.OrderHeader.PhoneNumber = shoppingCartVM.OrderHeader.ApplicationUser.PhoneNumber;
+            shoppingCartVM.OrderHeader.StreetAddress = shoppingCartVM.OrderHeader.ApplicationUser.StreetAddress;
+            shoppingCartVM.OrderHeader.City = shoppingCartVM.OrderHeader.ApplicationUser.City;
+            shoppingCartVM.OrderHeader.State = shoppingCartVM.OrderHeader.ApplicationUser.State;
+
+            return View(shoppingCartVM);
         }
     }
 }
