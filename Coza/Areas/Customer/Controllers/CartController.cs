@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Coza.DataAccess.Repository.IRepository;
+using Coza.Models;
 using Coza.Models.ViewModels;
 using Coza.Utility;
 using Microsoft.AspNetCore.Authorization;
@@ -17,6 +18,10 @@ namespace Coza.Areas.Customer.Controllers
     public class CartController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
+
+        [BindProperty]
+        public ShoppingCartViewModel ShoppingCartVM { get; set; }
+
         public CartController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -94,29 +99,67 @@ namespace Coza.Areas.Customer.Controllers
             var claims = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
 
             // display list of all products in cart based on user
-            ShoppingCartViewModel shoppingCartVM = new ShoppingCartViewModel()
+            ShoppingCartVM = new ShoppingCartViewModel()
             {
                 ListCart = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claims.Value, includeProperties: "Product"),
                 OrderHeader = new Models.OrderHeader()
             };
 
             // get details of logged in user and map to OrderHeader properties
-            shoppingCartVM.OrderHeader.ApplicationUser = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claims.Value);
+            ShoppingCartVM.OrderHeader.ApplicationUser = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claims.Value);
 
-            foreach (var items in shoppingCartVM.ListCart)
+            foreach (var items in ShoppingCartVM.ListCart)
             {
                 items.Price = (items.Product.Price * items.Count);
-                shoppingCartVM.OrderHeader.OrderTotal += (items.Price);
+                ShoppingCartVM.OrderHeader.OrderTotal += (items.Price);
 
             }
 
-            shoppingCartVM.OrderHeader.Name = shoppingCartVM.OrderHeader.ApplicationUser.Name;
-            shoppingCartVM.OrderHeader.PhoneNumber = shoppingCartVM.OrderHeader.ApplicationUser.PhoneNumber;
-            shoppingCartVM.OrderHeader.StreetAddress = shoppingCartVM.OrderHeader.ApplicationUser.StreetAddress;
-            shoppingCartVM.OrderHeader.City = shoppingCartVM.OrderHeader.ApplicationUser.City;
-            shoppingCartVM.OrderHeader.State = shoppingCartVM.OrderHeader.ApplicationUser.State;
+            ShoppingCartVM.OrderHeader.Name = ShoppingCartVM.OrderHeader.ApplicationUser.Name;
+            ShoppingCartVM.OrderHeader.PhoneNumber = ShoppingCartVM.OrderHeader.ApplicationUser.PhoneNumber;
+            ShoppingCartVM.OrderHeader.StreetAddress = ShoppingCartVM.OrderHeader.ApplicationUser.StreetAddress;
+            ShoppingCartVM.OrderHeader.City = ShoppingCartVM.OrderHeader.ApplicationUser.City;
+            ShoppingCartVM.OrderHeader.State = ShoppingCartVM.OrderHeader.ApplicationUser.State;
+            ShoppingCartVM.OrderHeader.Email = ShoppingCartVM.OrderHeader.ApplicationUser.Email;
 
-            return View(shoppingCartVM);
+            return View(ShoppingCartVM);
+        }
+
+        [HttpPost]
+        [ActionName("Checkout")]
+        public IActionResult CheckoutPost([FromBody]Payment paymentData) {
+
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claims = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+            ShoppingCartVM = new ShoppingCartViewModel{ 
+                OrderHeader = new OrderHeader()
+            }; 
+            
+            ShoppingCartVM.OrderHeader.Email = paymentData.Email;
+            ShoppingCartVM.OrderHeader.Name = paymentData.Name;
+            ShoppingCartVM.OrderHeader.PhoneNumber = paymentData.PhoneNumber;
+            ShoppingCartVM.OrderHeader.City = paymentData.City;
+            ShoppingCartVM.OrderHeader.StreetAddress = paymentData.StreetAddress;
+            ShoppingCartVM.OrderHeader.State = paymentData.State;
+            ShoppingCartVM.OrderHeader.TransactionId = paymentData.TransactionId.ToString();
+            ShoppingCartVM.OrderHeader.TxRef = paymentData.TxRef;
+            ShoppingCartVM.OrderHeader.FlwRef = paymentData.FlwRef;
+
+            ShoppingCartVM.OrderHeader.ApplicationUser = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claims.Value);
+
+            ShoppingCartVM.OrderHeader.OrderStatus = SD.StatusPending;
+            ShoppingCartVM.OrderHeader.ApplicationUserId = claims.Value;
+            ShoppingCartVM.OrderHeader.OrderDate = DateTime.Now;
+            ShoppingCartVM.OrderHeader.PaymentStatus = paymentData.Status;
+            ShoppingCartVM.OrderHeader.OrderTotal = paymentData.Amount;     // order total == total amount paid 
+
+            _unitOfWork.Payment.Add(paymentData);
+
+            _unitOfWork.OrderHeader.Add(ShoppingCartVM.OrderHeader);
+            _unitOfWork.Save();
+
+            return Json(new { success = true, message = "Payment Successful", url = Url.Action("Index", "Home") });
         }
     }
 }

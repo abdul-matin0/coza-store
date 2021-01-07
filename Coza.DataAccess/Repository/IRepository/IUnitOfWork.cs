@@ -12,6 +12,7 @@ namespace Coza.DataAccess.Repository.IRepository
         public IShoppingCartRepository ShoppingCart { get;  }
         public IOrderHeaderRepository OrderHeader { get; }
         public IOrderDetailsRepository OrderDetails { get; }
+        public IPaymentRepository Payment { get; }
 
         void Save();
     }

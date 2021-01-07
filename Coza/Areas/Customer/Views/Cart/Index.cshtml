@@ -56,7 +56,7 @@
                                     </td>
                                     <td class="column-5">$@items.Price</td>
                                     <td class="column-5">
-                                        <a asp-controller="Cart" asp-action="Remove" asp-route-id="@items.Id" class="btn cl8 hov-btn1 trans-04 flex-c-m">
+                                        <a onclick=Delete("/Customer/Cart/Remove/@items.Id") class="btn cl8 hov-btn1 trans-04 flex-c-m">
                                             <i class="fs-25 zmdi zmdi-delete"></i>
                                         </a>
                                     </td>

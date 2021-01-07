@@ -1,11 +1,13 @@
 ﻿<!-- checkout and payment with stripe -->
 @model Coza.Models.ViewModels.ShoppingCartViewModel
+@using Microsoft.Extensions.Options
 
-<section class="bg0 mt-3">
+@inject IOptions<Coza.Utility.FlutterwaveSettings> Flutterwave
+<form method="post" class="bg0 mt-3" id="form-data">
     <div class="container">
         <div class="flex-w flex-tr">
             <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
-                <form method="post">
+                <div>
                     <h4 class="mtext-105 cl2 txt-center p-b-30">
                         Checkout
                     </h4>
@@ -13,40 +15,47 @@
 
                     <label asp-for="OrderHeader.Name" class="stext-101"></label>
                     <div class="bor8 m-b-20 how-pos4-parent">
-                        <input asp-for="OrderHeader.Name" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text">
+                        <input asp-for="OrderHeader.Name" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" id="name">
                         <i class="how-pos4 pointer-none zmdi zmdi-account"></i>
+                    </div>
+                    <span asp-validation-for="OrderHeader.Name" class="text-danger"></span>
+
+                    <label asp-for="OrderHeader.Email" class="stext-101"></label>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input asp-for="OrderHeader.Email" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="email" id="email">
+                        <i class="how-pos4 pointer-none zmdi zmdi-email"></i>
                     </div>
                     <span asp-validation-for="OrderHeader.Name" class="text-danger"></span>
 
                     <label asp-for="OrderHeader.StreetAddress" class="stext-101"></label>
                     <div class="bor8 m-b-20 how-pos4-parent">
-                        <input asp-for="OrderHeader.StreetAddress" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text">
+                        <input asp-for="OrderHeader.StreetAddress" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" id="streetAddress">
                         <i class="how-pos4 pointer-none zmdi zmdi-home"></i>
                     </div>
                     <span asp-validation-for="OrderHeader.StreetAddress" class="text-danger"></span>
 
                     <label asp-for="OrderHeader.City" class="stext-101"></label>
                     <div class="bor8 m-b-20 how-pos4-parent">
-                        <input asp-for="OrderHeader.City" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text">
+                        <input asp-for="OrderHeader.City" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" id="city">
                         <i class="how-pos4 pointer-none zmdi zmdi-city"></i>
                     </div>
                     <span asp-validation-for="OrderHeader.City" class="text-danger"></span>
 
                     <label asp-for="OrderHeader.State" class="stext-101"></label>
                     <div class="bor8 m-b-20 how-pos4-parent">
-                        <input asp-for="OrderHeader.State" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text">
+                        <input asp-for="OrderHeader.State" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" id="state">
                         <i class="how-pos4 pointer-none zmdi zmdi-play-for-work"></i>
                     </div>
                     <span asp-validation-for="OrderHeader.State" class="text-danger"></span>
 
                     <label asp-for="OrderHeader.PhoneNumber" class="stext-101"></label>
                     <div class="bor8 m-b-20 how-pos4-parent">
-                        <input asp-for="OrderHeader.PhoneNumber" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="number">
+                        <input asp-for="OrderHeader.PhoneNumber" class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="number" id="phone">
                         <i class="how-pos4 pointer-none zmdi zmdi-phone"></i>
                     </div>
                     <span asp-validation-for="OrderHeader.PhoneNumber" class="text-danger"></span>
 
-                </form>
+                </div>
             </div>
 
             <div class="size-210 bor10 flex-w p-lr-93 p-tb-90 p-lr-15-lg w-full-md" style="flex-direction: column;">
@@ -70,12 +79,106 @@
                         <strong class="text-info">$@Model.OrderHeader.OrderTotal</strong>
                     </li>
                 </ul>
+                <div>
+                    <script src="https://checkout.flutterwave.com/v3.js"></script>
+                    <button type="button" class="flex-c-m stext-101 cl0 text-white size-116 bg3 bor14 hov-btn3 p-lr-15 m-t-15 trans-04 pointer" onclick="makePayment()">Make Payment</button>
+                </div>
             </div>
         </div>
     </div>
-</section>
+</form>
 
 @section Scripts{
-    <partial name="_ValidationScriptsPartial" /> 
+    <partial name="_ValidationScriptsPartial" />
 
+    <script>
+
+            function generateTxRefUId() {
+                return Date.now().toString(36) + Math.random().toString(36).substr(2);
+            }
+
+        var txRefUId = generateTxRefUId();
+        var status = "";
+
+            function makePayment() {
+                FlutterwaveCheckout({
+                    public_key: "@Flutterwave.Value.PublicKey",
+                    tx_ref: txRefUId,
+                    amount:@Model.OrderHeader.OrderTotal,
+                    currency: "USD",
+                    country: "NG",
+                    payment_options: "card, ussd",
+                    // redirect_url: // specified redirect URL
+                    //    "https://bulkybookme.azurewebsites.net",
+                    meta: {
+                        consumer_id: 23,
+                        consumer_mac: "92a3-912ba-1192a",
+                    },
+                    customer: {
+                        email: document.getElementById("email").value,
+                        phone_number: document.getElementById("phone").value,
+                        name: document.getElementById("name").value,
+                    },
+                    callback: function (data) {
+
+                        var newData = {
+                            "name": data.customer.name,
+                            "email": data.customer.email,
+                            "amount": data.amount,
+                            "currency": data.currency,
+                            "phoneNumber": data.customer.phone_number,
+                            "flwRef": data.flw_ref,
+                            "transactionId": data.transaction_id,
+                            "txRef": data.tx_ref,
+                            "status": data.status,
+                            "phoneNumber": data.customer.phone_number,
+                            "streetAddress": document.getElementById("streetAddress").value,
+                            "city": document.getElementById("city").value,
+                            "state": document.getElementById("state").value
+                        };
+
+                        status = data.status;
+
+                        if (data.status == "successful") {
+                            $.ajax({
+                                type: "POST",
+                                url: "/Customer/Cart/Checkout",
+                                data: JSON.stringify(newData),
+                                contentType: "application/json",
+                                success: function (newValue) { ////////
+                                    console.log(newValue);
+                                    if (newValue.success) {
+                                        Swal.fire(
+                                            'Success!',
+                                            newValue.message,
+                                            'success'
+                                        ).then((btnOk) => {
+                                            // redirect to home
+                                            window.location = newValue.url;
+                                        });
+                                    }
+                                }
+                            });
+                        }
+                    },
+                    onclose: function () {
+                        if (status == "successful") {
+                            Swal.fire(
+                                'Success!',
+                                "Payment Successful",
+                                'success'
+                            ).then((btnOk) => {
+                                // redirect to home
+                                window.location = "https://localhost:44315/";
+                            });
+                        }
+                    },
+                    customizations: {
+                        title: "My store",
+                        description: "Payment for items in cart",
+                        logo: "https://assets.piedpiper.com/logo.png",
+                    },
+                });
+            }
+    </script>
 }

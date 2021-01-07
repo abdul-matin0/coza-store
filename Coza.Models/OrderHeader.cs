@@ -28,6 +28,8 @@ namespace Coza.Models
         public DateTime PaymentDate { get; set; }
         public DateTime PaymentDueDate { get; set; }
         public string TransactionId { get; set; }
+        public string TxRef { get; set; }
+        public string FlwRef { get; set; }
 
         [Required]
         public string PhoneNumber { get; set; }
@@ -39,5 +41,9 @@ namespace Coza.Models
         public string State { get; set; }
         [Required]
         public string Name { get; set; }
+        [Required]
+        public string Email { get; set; }
+        
+        public string Currency { get; set; }
     }
 }

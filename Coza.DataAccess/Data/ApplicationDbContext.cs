@@ -20,5 +20,6 @@ namespace Coza.DataAccess.Data
         public DbSet<ShoppingCart> ShoppingCart { get; set; }
         public DbSet<OrderHeader> OrderHeader { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
+        public DbSet<Payment> Payments { get; set; }
     }
 }

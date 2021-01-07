@@ -4,14 +4,16 @@ using Coza.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Coza.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210107094945_UpdatePaymentModelDbMapped")]
+    partial class UpdatePaymentModelDbMapped
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -145,59 +147,6 @@ namespace Coza.DataAccess.Migrations
                     b.HasIndex("ApplicationUserId");
 
                     b.ToTable("OrderHeader");
-                });
-
-            modelBuilder.Entity("Coza.Models.Payment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<double>("Amount")
-                        .HasColumnType("float");
-
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Currency")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FlwRef")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("State")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StreetAddress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TransactionId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TxRef")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApplicationUserId");
-
-                    b.ToTable("Payments");
                 });
 
             modelBuilder.Entity("Coza.Models.Product", b =>
@@ -494,13 +443,6 @@ namespace Coza.DataAccess.Migrations
                 });
 
             modelBuilder.Entity("Coza.Models.OrderHeader", b =>
-                {
-                    b.HasOne("Coza.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("ApplicationUserId");
-                });
-
-            modelBuilder.Entity("Coza.Models.Payment", b =>
                 {
                     b.HasOne("Coza.Models.ApplicationUser", "ApplicationUser")
                         .WithMany()

@@ -18,6 +18,7 @@ namespace Coza.DataAccess.Repository
             ShoppingCart = new ShoppingCartRepository(_db);
             OrderHeader = new OrderHeaderRepository(_db);
             OrderDetails = new OrderDetailsRepository(_db);
+            Payment = new PaymentRepository(_db);
         }
 
         public ICategoryRepository Category { get; private set; }
@@ -26,6 +27,7 @@ namespace Coza.DataAccess.Repository
         public IShoppingCartRepository ShoppingCart { get; private set; }
         public IOrderHeaderRepository OrderHeader { get; private set; }
         public IOrderDetailsRepository OrderDetails { get; private set; }
+        public IPaymentRepository Payment { get; private set; }
 
         public void Dispose()
         {
