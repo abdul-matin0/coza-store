@@ -16,6 +16,7 @@ using Coza.DataAccess.Repository;
 using Coza.DataAccess.Repository.IRepository;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Coza.Utility;
+using Coza.DataAccess.Initializer;
 
 namespace Coza
 {
@@ -60,7 +61,7 @@ namespace Coza
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitializer dbInitializer)
         {
             if (env.IsDevelopment())
             {
@@ -81,6 +82,8 @@ namespace Coza
             app.UseSession();
             app.UseAuthentication();
             app.UseAuthorization();
+
+            dbInitializer.Initialize();
 
             app.UseEndpoints(endpoints =>
             {
