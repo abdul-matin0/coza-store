@@ -43,6 +43,7 @@ namespace Coza
             services.AddRazorPages();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IDbInitializer, DbInitializer>();
             services.AddSingleton<IEmailSender, EmailSender>();
             services.Configure<FlutterwaveSettings>(Configuration.GetSection("FlutterWave"));
 
