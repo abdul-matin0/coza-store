@@ -129,37 +129,68 @@ namespace Coza.Areas.Customer.Controllers
         [ActionName("Checkout")]
         public IActionResult CheckoutPost([FromBody]Payment paymentData) {
 
-            var claimsIdentity = (ClaimsIdentity)User.Identity;
-            var claims = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            if(paymentData.Status.Equals("successful"))
+            {
+                var claimsIdentity = (ClaimsIdentity)User.Identity;
+                var claims = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
 
-            ShoppingCartVM = new ShoppingCartViewModel{ 
-                OrderHeader = new OrderHeader()
-            }; 
+                ShoppingCartVM = new ShoppingCartViewModel
+                {
+                    OrderHeader = new OrderHeader(),
+                    ListCart = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claims.Value, includeProperties: "Product")
+                };
+
+
+                ShoppingCartVM.OrderHeader.Email = paymentData.Email;
+                ShoppingCartVM.OrderHeader.Name = paymentData.Name;
+                ShoppingCartVM.OrderHeader.PhoneNumber = paymentData.PhoneNumber;
+                ShoppingCartVM.OrderHeader.City = paymentData.City;
+                ShoppingCartVM.OrderHeader.StreetAddress = paymentData.StreetAddress;
+                ShoppingCartVM.OrderHeader.State = paymentData.State;
+                ShoppingCartVM.OrderHeader.TransactionId = paymentData.TransactionId.ToString();
+                ShoppingCartVM.OrderHeader.TxRef = paymentData.TxRef;
+                ShoppingCartVM.OrderHeader.FlwRef = paymentData.FlwRef;
+
+                ShoppingCartVM.OrderHeader.ApplicationUser = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claims.Value);
+                paymentData.ApplicationUser = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claims.Value);
+                paymentData.ApplicationUserId = claims.Value;
+
+                ShoppingCartVM.OrderHeader.OrderStatus = SD.StatusPending;
+                ShoppingCartVM.OrderHeader.ApplicationUserId = claims.Value;
+                ShoppingCartVM.OrderHeader.OrderDate = DateTime.Now;
+                ShoppingCartVM.OrderHeader.PaymentStatus = paymentData.Status;
+                ShoppingCartVM.OrderHeader.OrderTotal = paymentData.Amount;     // order total == total amount paid 
+
+                _unitOfWork.Payment.Add(paymentData);
+
+                _unitOfWork.OrderHeader.Add(ShoppingCartVM.OrderHeader);
+                _unitOfWork.Save();
+
+                foreach (var item in ShoppingCartVM.ListCart)
+                {
+                    OrderDetails orderDetails = new OrderDetails()
+                    {
+                        ProductId = item.ProductId,
+                        OrderId = ShoppingCartVM.OrderHeader.Id,
+                        Price = paymentData.Amount,
+                        Count = item.Count
+                    };
+
+                    _unitOfWork.OrderDetails.Add(orderDetails);
+                }
+
+                _unitOfWork.ShoppingCart.RemoveRange(ShoppingCartVM.ListCart);
+                _unitOfWork.Save();
+                // empty all items in shopping cart
+
+                // set session 
+                HttpContext.Session.SetInt32(SD.ssShoppingCart, 0);
+
+                return Json(new { success = true, message = "Payment Successful", url = Url.Action("Index", "Home") });
+            }
+            // something went wrong
+            return RedirectToAction("Checkout");
             
-            ShoppingCartVM.OrderHeader.Email = paymentData.Email;
-            ShoppingCartVM.OrderHeader.Name = paymentData.Name;
-            ShoppingCartVM.OrderHeader.PhoneNumber = paymentData.PhoneNumber;
-            ShoppingCartVM.OrderHeader.City = paymentData.City;
-            ShoppingCartVM.OrderHeader.StreetAddress = paymentData.StreetAddress;
-            ShoppingCartVM.OrderHeader.State = paymentData.State;
-            ShoppingCartVM.OrderHeader.TransactionId = paymentData.TransactionId.ToString();
-            ShoppingCartVM.OrderHeader.TxRef = paymentData.TxRef;
-            ShoppingCartVM.OrderHeader.FlwRef = paymentData.FlwRef;
-
-            ShoppingCartVM.OrderHeader.ApplicationUser = _unitOfWork.ApplicationUser.GetFirstOrDefault(u => u.Id == claims.Value);
-
-            ShoppingCartVM.OrderHeader.OrderStatus = SD.StatusPending;
-            ShoppingCartVM.OrderHeader.ApplicationUserId = claims.Value;
-            ShoppingCartVM.OrderHeader.OrderDate = DateTime.Now;
-            ShoppingCartVM.OrderHeader.PaymentStatus = paymentData.Status;
-            ShoppingCartVM.OrderHeader.OrderTotal = paymentData.Amount;     // order total == total amount paid 
-
-            _unitOfWork.Payment.Add(paymentData);
-
-            _unitOfWork.OrderHeader.Add(ShoppingCartVM.OrderHeader);
-            _unitOfWork.Save();
-
-            return Json(new { success = true, message = "Payment Successful", url = Url.Action("Index", "Home") });
         }
     }
 }
