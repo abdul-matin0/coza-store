@@ -495,3 +495,6 @@ C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\sta
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Coza.dll
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Coza.pdb
 C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\obj\Debug\netcoreapp3.1\Coza.genruntimeconfig.cache
+C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.CozaDev - Web Deploy.json
+C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\CozaDev - Web Deploy\mssql1.arm.json
+C:\Users\HP PAVILLION\3D Objects\.net core\Coza\Coza\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\CozaDev - Web Deploy\profile.arm.json

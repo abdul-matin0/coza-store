@@ -53,7 +53,7 @@
                 <div class="content-topbar flex-sb-m h-full container">
 
                     <div class="left-top-bar">
-                        Free shipping for standard order over $100
+                        Login With Admin User to view more functions<span class="pl-2 pr-2">email: admin@gmail.com</span><span>Password: Admin123*</span>
                     </div>
 
                     <div class="right-top-bar flex-w h-full">
@@ -202,7 +202,7 @@
             <ul class="topbar-mobile">
                 <li>
                     <div class="left-top-bar">
-                        Free shipping for standard order over $100
+                        Login With Admin User to view more site functions<span class="pl-2 pr-2">email: admin@gmail.com</span><span>Password: Admin123*</span>
                     </div>
                 </li>
 
@@ -248,6 +248,18 @@
                         <a asp-area="Admin" asp-controller="User" asp-action="Index">Users</a>
                     </li>
                 }
+                <li>
+                    <a asp-area="Admin" asp-controller="Order" asp-action="Index">
+                    @if (User.IsInRole(SD.Role_Employee) || User.IsInRole(SD.Role_Admin))
+                    {
+                        <span>Manage Order</span>
+                    }
+                   else
+                    {
+                        <span>Order History</span>
+                    }
+                  </a>
+               </li>
 
                 <li>
                     <a href="contact.html">Contact</a>

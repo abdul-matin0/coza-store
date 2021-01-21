@@ -66,19 +66,20 @@
                     @foreach (var details in Model.ListCart)
                     {
 
-                        <li class="list-group-item d-flex justify-content-between">
-                            <div>
-                                <h6 class="my-0">@details.Product.Title</h6>
-                                <small class="text-muted">Quantity: @details.Count</small>
-                            </div>
-                            <span class="text-muted">$@(details.Price * details.Count)</span>
-                        </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <div>
+                            <h6 class="my-0">@details.Product.Title</h6>
+                            <small class="text-muted">Quantity: @details.Count</small>
+                        </div>
+                        <span class="text-muted">$@(details.Price * details.Count)</span>
+                    </li>
                     }
                     <li class="list-group-item d-flex justify-content-between bg-light">
                         <small class="text-info">Total (USD)</small>
                         <strong class="text-info">$@Model.OrderHeader.OrderTotal</strong>
                     </li>
                 </ul>
+                <a href="https://developer.flutterwave.com/docs/test-cards#" target="_blank" class="flex-c-m stext-101 cl2 size-116 bg8 bor14 hov-btn3 p-lr-15 m-t-15 trans-04 pointer">View Test Cards For Testing Payment</a>
                 <div>
                     <script src="https://checkout.flutterwave.com/v3.js"></script>
                     <button type="button" class="flex-c-m stext-101 cl0 text-white size-116 bg3 bor14 hov-btn3 p-lr-15 m-t-15 trans-04 pointer" onclick="makePayment()">Make Payment</button>
@@ -169,14 +170,14 @@
                                 'success'
                             ).then((btnOk) => {
                                 // redirect to home
-                                window.location = "https://localhost:44315/";
+                                window.location = "https://cozadev.azurewebsites.net/";
                             });
                         }
                     },
                     customizations: {
                         title: "My store",
                         description: "Payment for items in cart",
-                        logo: "https://assets.piedpiper.com/logo.png",
+                        logo: "https://cozadev.azurewebsites.net/images/icons/logo-01.png",
                     },
                 });
             }
